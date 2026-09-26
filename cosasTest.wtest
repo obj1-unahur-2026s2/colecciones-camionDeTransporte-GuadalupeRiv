@@ -1,9 +1,57 @@
 import cosas.*
 
-describe "group of test for cosas" {
+describe "test para las cargas" {
 
-  test "first test" {
-    assert.that(true)
+  test "paquete de ladrillos con 15 ladrillos pesa 30"{
+    paqueteDeLadrillos.agregarCantLadrillos(15)
+    assert.equals(30,paqueteDeLadrillos.peso())
+
   }
+test "paquete de Ladrillos tiene una peligrosidad de 2"{
+  assert.equals(2,paqueteDeLadrillos.peligrosidad())
+}
 
+  test "bateria Antiaerea pesa 300 si esta con misiles"{
+    bateriaAntiaerea.cargarMisiles()
+    assert.equals(300,bateriaAntiaerea.peso())
+
+  }
+test "bateria Antieaerea tiene una peligrosidad de 100 si esta con misiles"{
+  assert.equals(100,bateriaAntiaerea.peligrosidad())
+}
+test "bateria Antiaerea pesa 200 si esta sin misiles"{
+    bateriaAntiaerea.descargarMisiles()
+    assert.equals(200,bateriaAntiaerea.peso())
+
+  }
+test "bateria Antieaerea tiene una peligrosidad de 0 si no esta con misiles"{
+  bateriaAntiaerea.descargarMisiles()
+  assert.equals(0, bateriaAntiaerea.peligrosidad())
+}
+
+test "contenedor portuario pesa 1430 si esta cargado con knightRider,bumblebee y paquete de 15 ladrillos"{
+  contenedorPortuario.ponerEnContenedor(knightRider)
+  contenedorPortuario.ponerEnContenedor(bumblebee)
+  paqueteDeLadrillos.agregarCantLadrillos(15)
+  contenedorPortuario.ponerEnContenedor(paqueteDeLadrillos)
+  assert.equals(1430,contenedorPortuario.peso())
+}
+
+test "contenedor portuario tiene peligrosidad de 15 cargado con knightRider,bumblebee auto y paquete de ladrillos"{
+  contenedorPortuario.ponerEnContenedor(knightRider)
+  contenedorPortuario.ponerEnContenedor(bumblebee)
+  contenedorPortuario.ponerEnContenedor(paqueteDeLadrillos)
+  assert.equals(15,contenedorPortuario.peligrosidad())
+}
+
+test "embalaje de seguridad pesa 30 con 30 de residuos radioctivos"{
+  residuosRadioactivos.cambiarPeso(30)
+  embalajeDeSeguridad.cambiarCosaEmbalada(residuosRadioactivos)
+  assert.equals(30,embalajeDeSeguridad.peso())
+}
+
+test "embalaje de seguridad tiene 100 de peligrosidad con residuos radioctivos"{
+  embalajeDeSeguridad.cambiarCosaEmbalada(residuosRadioactivos)
+  assert.equals(100,embalajeDeSeguridad.peligrosidad())
+}
 }

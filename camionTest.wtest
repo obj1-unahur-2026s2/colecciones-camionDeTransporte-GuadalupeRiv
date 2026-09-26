@@ -1,9 +1,45 @@
+import cosas.*
 import camion.*
 
-describe "group of test for camion" {
+describe " test para el camion" {
 
-  test "first test" {
-    assert.that(true)
+  test "el camion carga a bumblebee como robot, 150 de arena a granel, la bateria Antiaerea con los misiles puestos y embalaje de seguridad con 80 ladrillos" {
+    bumblebee.transformarseEnRobot()
+    camion.cargarCamion(bumblebee)
+    arenaAGranel.cambiarPeso(150)
+    camion.cargarCamion(arenaAGranel)
+    bateriaAntiaerea.cargarMisiles()
+    camion.cargarCamion(bateriaAntiaerea)
+    paqueteDeLadrillos.agregarCantLadrillos(80)
+    embalajeDeSeguridad.cambiarCosaEmbalada(paqueteDeLadrillos)
+    camion.cargarCamion(embalajeDeSeguridad)
+    assert.equals([bumblebee,arenaAGranel,bateriaAntiaerea,embalajeDeSeguridad],camion.verCargaDelCamion())
+  }
+
+  test "el camion cargado con bumblebee como robot, 150 de arena a granel, la bateria Antiaerea con los misiles puestos y embalaje de seguridad con 80 ladrillos pesa 2410" {
+    bumblebee.transformarseEnRobot()
+    camion.cargarCamion(bumblebee)
+    arenaAGranel.cambiarPeso(150)
+    camion.cargarCamion(arenaAGranel)
+    bateriaAntiaerea.cargarMisiles()
+    camion.cargarCamion(bateriaAntiaerea)
+    paqueteDeLadrillos.agregarCantLadrillos(80)
+    embalajeDeSeguridad.cambiarCosaEmbalada(paqueteDeLadrillos)
+    camion.cargarCamion(embalajeDeSeguridad)
+    assert.equals(2410,camion.pesoTotalCamion())
+  }
+
+  test "La carga del camion con  bumblebee como robot, 150 de arena a granel, la bateria Antiaerea con los misiles puestos y embalaje de seguridad con 80 ladrillos" {
+    bumblebee.transformarseEnRobot()
+    camion.cargarCamion(bumblebee)
+    arenaAGranel.cambiarPeso(150)
+    camion.cargarCamion(arenaAGranel)
+    bateriaAntiaerea.cargarMisiles()
+    camion.cargarCamion(bateriaAntiaerea)
+    paqueteDeLadrillos.agregarCantLadrillos(80)
+    embalajeDeSeguridad.cambiarCosaEmbalada(paqueteDeLadrillos)
+    camion.cargarCamion(embalajeDeSeguridad)
+    assert.equals(1410,camion.pesoTotalDeLaCarga())
   }
 
 }
